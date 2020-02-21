@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.960
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S3.Train.WebPerFume", "S3.Train.WebPerFume\S3.Train.WebPerFume.csproj", "{92A99B77-7EB8-44FF-8CEF-A8391316057F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "business", "business", "{269AAE7E-8BC0-4F1B-87A8-68AB4BF493A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "database", "database", "{FA5C5590-E93F-4106-AF7A-0590838615E7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "framework", "framework", "{332D6B38-2953-44C8-92EB-57578F2072E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S3Train.Core", "S3Train.Core\S3Train.Core.csproj", "{DB766CB7-FE6C-4849-9DFE-12A70A537F80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S3Train.Domain", "S3Train.Domain\S3Train.Domain.csproj", "{E1778609-49E4-4DE5-A064-570F6E8BCD0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "S3Train.Service", "S3Train.Service\S3Train.Service.csproj", "{95439E7B-F59D-4ACD-A2B0-75C27F3319AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{92A99B77-7EB8-44FF-8CEF-A8391316057F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92A99B77-7EB8-44FF-8CEF-A8391316057F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92A99B77-7EB8-44FF-8CEF-A8391316057F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92A99B77-7EB8-44FF-8CEF-A8391316057F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB766CB7-FE6C-4849-9DFE-12A70A537F80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB766CB7-FE6C-4849-9DFE-12A70A537F80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB766CB7-FE6C-4849-9DFE-12A70A537F80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB766CB7-FE6C-4849-9DFE-12A70A537F80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1778609-49E4-4DE5-A064-570F6E8BCD0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1778609-49E4-4DE5-A064-570F6E8BCD0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1778609-49E4-4DE5-A064-570F6E8BCD0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1778609-49E4-4DE5-A064-570F6E8BCD0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95439E7B-F59D-4ACD-A2B0-75C27F3319AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95439E7B-F59D-4ACD-A2B0-75C27F3319AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95439E7B-F59D-4ACD-A2B0-75C27F3319AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95439E7B-F59D-4ACD-A2B0-75C27F3319AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DB766CB7-FE6C-4849-9DFE-12A70A537F80} = {332D6B38-2953-44C8-92EB-57578F2072E5}
+		{E1778609-49E4-4DE5-A064-570F6E8BCD0F} = {269AAE7E-8BC0-4F1B-87A8-68AB4BF493A5}
+		{95439E7B-F59D-4ACD-A2B0-75C27F3319AF} = {269AAE7E-8BC0-4F1B-87A8-68AB4BF493A5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B9841783-262E-4548-99F2-854E65B82E9B}
+	EndGlobalSection
+EndGlobal
