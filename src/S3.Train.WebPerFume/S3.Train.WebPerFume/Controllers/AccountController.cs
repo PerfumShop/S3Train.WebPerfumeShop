@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using S3.Train.WebPerFume.Models;
+using S3Train.Domain;
 
 namespace S3.Train.WebPerFume.Controllers
 {

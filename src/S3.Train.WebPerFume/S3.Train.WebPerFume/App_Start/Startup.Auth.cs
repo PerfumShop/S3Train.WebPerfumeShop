@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using S3.Train.WebPerFume.Models;
+using S3Train.Domain;
 
 namespace S3.Train.WebPerFume
 {

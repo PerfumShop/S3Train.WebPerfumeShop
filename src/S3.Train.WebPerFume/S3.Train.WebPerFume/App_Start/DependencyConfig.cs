@@ -2,6 +2,7 @@
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
 using S3.Train.WebPerFume.Models;
+using S3Train.Domain;
 using S3Train.Service;
 using System;
 using System.Collections.Generic;

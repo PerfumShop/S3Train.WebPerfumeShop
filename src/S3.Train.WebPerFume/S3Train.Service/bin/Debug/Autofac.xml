@@ -2581,14 +2581,21 @@
             Gets the parent of this node of the hierarchy, or null.
             </summary>
         </member>
-        <member name="M:Autofac.Core.ISharingLifetimeScope.GetOrCreateAndShare(System.Guid,System.Func{System.Object})">
+        <member name="M:Autofac.Core.ISharingLifetimeScope.TryGetSharedInstance(System.Guid,System.Object@)">
             <summary>
-            Try to retrieve an instance based on a GUID key. If the instance
-            does not exist, invoke <paramref name="creator"/> to create it.
+            Try to retrieve a shared instance based on a GUID key.
             </summary>
             <param name="id">Key to look up.</param>
-            <param name="creator">Creation function.</param>
-            <returns>An instance.</returns>
+            <param name="value">The instance that has the specified key.</param>
+            <returns><c>true</c> if the key was found; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Autofac.Core.ISharingLifetimeScope.CreateSharedInstance(System.Guid,System.Func{System.Object})">
+            <summary>
+            Creates a shared instance with a GUID key.
+            </summary>
+            <param name="id">Key.</param>
+            <param name="creator">A function that will create the instance when called.</param>
+            <returns>The shared instance.</returns>
         </member>
         <member name="T:Autofac.Core.KeyedService">
             <summary>
@@ -2786,14 +2793,11 @@
             Gets the root of the sharing hierarchy.
             </summary>
         </member>
-        <member name="M:Autofac.Core.Lifetime.LifetimeScope.GetOrCreateAndShare(System.Guid,System.Func{System.Object})">
-            <summary>
-            Try to retrieve an instance based on a GUID key. If the instance
-            does not exist, invoke <paramref name="creator"/> to create it.
-            </summary>
-            <param name="id">Key to look up.</param>
-            <param name="creator">Creation function.</param>
-            <returns>An instance.</returns>
+        <member name="M:Autofac.Core.Lifetime.LifetimeScope.CreateSharedInstance(System.Guid,System.Func{System.Object})">
+            <inheritdoc />
+        </member>
+        <member name="M:Autofac.Core.Lifetime.LifetimeScope.TryGetSharedInstance(System.Guid,System.Object@)">
+            <inheritdoc />
         </member>
         <member name="P:Autofac.Core.Lifetime.LifetimeScope.Disposer">
             <summary>
@@ -3453,9 +3457,28 @@
             All registrations.
             </summary>
         </member>
+        <member name="F:Autofac.Core.Registration.DefaultRegisteredServicesTracker._properties">
+            <summary>
+            Gets the set of properties used during component registration.
+            </summary>
+            <value>
+            An <see cref="T:System.Collections.Generic.IDictionary`2"/> that can be used to share context across registrations.
+            </value>
+        </member>
         <member name="F:Autofac.Core.Registration.DefaultRegisteredServicesTracker._synchRoot">
             <summary>
             Protects instance variables from concurrent access.
+            </summary>
+        </member>
+        <member name="E:Autofac.Core.Registration.DefaultRegisteredServicesTracker.Registered">
+            <summary>
+            Fired whenever a component is registered - either explicitly or via a
+            <see cref="T:Autofac.Core.IRegistrationSource"/>.
+            </summary>
+        </member>
+        <member name="E:Autofac.Core.Registration.DefaultRegisteredServicesTracker.RegistrationSourceAdded">
+            <summary>
+            Fired when an <see cref="T:Autofac.Core.IRegistrationSource"/> is added to the registry.
             </summary>
         </member>
         <member name="P:Autofac.Core.Registration.DefaultRegisteredServicesTracker.Registrations">
@@ -3622,6 +3645,16 @@
             <param name="registration">The default registration for the service.</param>
             <returns>True if a registration exists.</returns>
         </member>
+        <member name="E:Autofac.Core.Registration.IRegisteredServicesTracker.Registered">
+            <summary>
+            Fired whenever a component is registered - either explicitly or via an <see cref="T:Autofac.Core.IRegistrationSource"/>.
+            </summary>
+        </member>
+        <member name="E:Autofac.Core.Registration.IRegisteredServicesTracker.RegistrationSourceAdded">
+            <summary>
+            Fired when an <see cref="T:Autofac.Core.IRegistrationSource"/> is added to the registry.
+            </summary>
+        </member>
         <member name="P:Autofac.Core.Registration.IRegisteredServicesTracker.Registrations">
             <summary>
             Gets the registered components.
@@ -3744,6 +3777,11 @@
         <member name="F:Autofac.Core.Registration.ServiceRegistrationInfo._sourcesToQuery">
             <summary>
             Used for bookkeeping so that the same source is not queried twice (may be null).
+            </summary>
+        </member>
+        <member name="F:Autofac.Core.Registration.ServiceRegistrationInfo._registeredImplementations">
+            <summary>
+            The combined list of registered implementations. The value will be calculated lazily by <see cref="M:Autofac.Core.Registration.ServiceRegistrationInfo.InitializeComponentRegistrations" />.
             </summary>
         </member>
         <member name="M:Autofac.Core.Registration.ServiceRegistrationInfo.#ctor(Autofac.Core.Service)">
@@ -7905,6 +7943,15 @@
             <param name="registration">The component registration for the service.</param>
             <param name="parameters">The parameters used when resolving the service.</param>
         </member>
+        <member name="M:Autofac.ResolveRequest.#ctor(Autofac.Core.Service,Autofac.Core.IComponentRegistration,System.Collections.Generic.IEnumerable{Autofac.Core.Parameter},Autofac.Core.IComponentRegistration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Autofac.ResolveRequest"/> class.
+            </summary>
+            <param name="service">The service being resolved.</param>
+            <param name="registration">The component registration for the service.</param>
+            <param name="parameters">The parameters used when resolving the service.</param>
+            <param name="decoratorTarget">The target component to be decorated.</param>
+        </member>
         <member name="P:Autofac.ResolveRequest.Service">
             <summary>
             Gets the service being resolved.
@@ -7918,6 +7965,11 @@
         <member name="P:Autofac.ResolveRequest.Parameters">
             <summary>
             Gets the parameters used when resolving the service.
+            </summary>
+        </member>
+        <member name="P:Autofac.ResolveRequest.DecoratorTarget">
+            <summary>
+            Gets the component registration for the decorator target if configured.
             </summary>
         </member>
         <member name="T:Autofac.ScanningFilterExtensions">
