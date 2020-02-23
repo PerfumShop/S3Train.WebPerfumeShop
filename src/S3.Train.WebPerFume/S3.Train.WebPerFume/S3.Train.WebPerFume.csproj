@@ -231,7 +231,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeAdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\VendorController.cs" />
+    <Compile Include="Areas\Admin\Models\ProductViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -241,6 +243,10 @@
     <Compile Include="Migrations\202002210834533_Init.cs" />
     <Compile Include="Migrations\202002210834533_Init.designer.cs">
       <DependentUpon>202002210834533_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002230230378_AddImagePathInProduct.cs" />
+    <Compile Include="Migrations\202002230230378_AddImagePathInProduct.designer.cs">
+      <DependentUpon>202002230230378_AddImagePathInProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -714,6 +720,8 @@
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AddOrEditPartial.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -888,13 +896,14 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\Checkout.cshtml" />
+    <Content Include="Views\Shared\EditorTemplate\FormControlTextBox.cshtml" />
+    <Content Include="Views\Shared\EditorTemplate\FormControlPassword.cshtml" />
+    <Content Include="Views\Shared\EditorTemplate\DropDownList.cshtml" />
     <None Include="Web.LocalConnectStrings.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Vendor\" />
-    <Folder Include="Views\Shared\EditorTemplate\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -922,6 +931,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202002210834533_Init.resx">
       <DependentUpon>202002210834533_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002230230378_AddImagePathInProduct.resx">
+      <DependentUpon>202002230230378_AddImagePathInProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

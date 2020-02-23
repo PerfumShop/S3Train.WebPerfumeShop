@@ -56,6 +56,7 @@ namespace S3Train.Domain
             modelBuilder.Entity<Product>().HasMany(p => p.ProductVariations).WithRequired(s => s.Product).WillCascadeOnDelete();            modelBuilder.Entity<Product>().Property(p => p.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
             modelBuilder.Entity<Product>().Property(x => x.Name).HasMaxLength(60).IsRequired();
             modelBuilder.Entity<Product>().Property(x => x.Description).HasMaxLength(int.MaxValue).IsRequired();
+            modelBuilder.Entity<Product>().Property(x => x.ImagePath).IsRequired();
             modelBuilder.Entity<Product>().HasMany<Category>(f => f.Categories).WithMany(p => p.Products)
                 .Map(pc =>
                 {

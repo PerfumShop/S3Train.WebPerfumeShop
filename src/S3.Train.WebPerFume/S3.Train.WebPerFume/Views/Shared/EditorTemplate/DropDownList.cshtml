@@ -1,0 +1,29 @@
+﻿@using System.Text.RegularExpressions
+@model List<SelectListItem>
+<select name="@ViewBag.name" id="@ViewBag.id" class="form-control @ViewBag.Style" onchange="@ViewBag.onchange">
+    @if (ViewBag.defaultitem != null)
+    {
+        <option value="">@ViewBag.defaultitem</option>
+    }
+    @if (Model != null)
+    {
+        if (ViewBag.displayValue == "true")
+        {
+            foreach (var item in Model)
+            {
+                <option value="@item.Value" @Html.Raw(item.Selected ? "selected" : "")>
+                    @Html.Raw(Regex.Replace(item.Text, @"\s", "&nbsp;"))
+                </option>
+            }
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <option value="@item.Value" @Html.Raw(item.Selected ? "selected" : "")>
+                    @Html.Raw(Regex.Replace(item.Text, @"\s", "&nbsp;"))
+                </option>
+            }
+        }
+    }
+</select>
