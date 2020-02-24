@@ -1,0 +1,26 @@
+﻿@using S3.Train.WebPerFume.Areas.Admin.Models
+@model IEnumerable<BrandViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card card-body display">
+    <div class="card-title">Brands</div>
+    <hr />
+    <div>
+        @Html.ActionLink("New", "AddOrEditProduct", "Product", new { @class = "btn btn-gradient-success" })
+    </div>
+
+    @foreach(var brand in Model)
+    {
+        <div class="table table-bordered">
+            <div class="h4">@brand.Name</div>
+
+            @Html.Partial("_ProductList_NameImagelPartial", brand.Products)
+        </div>
+        <div></div>
+    }
+</div>
+

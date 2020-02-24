@@ -1,0 +1,29 @@
+﻿@using S3.Train.WebPerFume.Areas.Admin.Models;
+@model IEnumerable<ProductViewModel>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Name, "Edit", new { id = item.Id })
+                </td>
+                <td class="py-1">
+                    <img src="~/Content/img/product-men/@item.ImagePath" class="img-" alt="@item.Name" />
+                </td>
+            </tr>
+        </tbody>
+    }
+
+</table>
