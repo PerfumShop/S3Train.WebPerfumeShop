@@ -25,9 +25,11 @@ namespace S3.Train.WebPerFume.Areas.Admin.Models
 
         [UIHint("FormControlTextBox")]
         [Required]
+        [AllowHtml]
         public string Description { get; set; }
 
         [Display(Name = "Create Date")]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
         public DateTime CreateDate { get; set; }
 
         [Display(Name = "Image")]
@@ -37,8 +39,9 @@ namespace S3.Train.WebPerFume.Areas.Admin.Models
         [Display(Name = "Active")]
         public bool IsActive { get; set; }
 
-        [UIHint("DropDownList")]
-        public List<SelectListItem> MyItems { get; set; }
+        public List<SelectListItem> DropDownBrand { get; set; }
+
+        public List<SelectListItem> DropDownVendor { get; set; }
 
         public virtual Vendor Vendor { get; set; }
         public virtual Brand Brand { get; set; }

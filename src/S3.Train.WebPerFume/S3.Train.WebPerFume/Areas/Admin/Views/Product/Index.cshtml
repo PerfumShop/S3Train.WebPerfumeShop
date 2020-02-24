@@ -6,48 +6,42 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<div class="card card-body">
-    <div class="card-title">Products</div>
-    @{
-        var modelNull = new ProductViewModel();
-    }
-    <div class="text-center">
-        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">
-            Launch
-            Modal Login Form
-        </a>
+<div class="card card-body display">
+    <h2 class="card-text">Products</h2>
+    <div>
+        @Html.ActionLink("New", "AddOrEditProduct", "Product", new { @class = "btn btn-gradient-success" })
     </div>
-    @Html.Partial("_AddOrEditPartial", modelNull)
-
-    <div class="top-buffer"></div>
-    <table class="table table-hover">
+    <hr />
+    <table id="myTable" class="table table-hover">
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Vendor_Id)
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImagePath)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.Brand_Id)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                    @Html.DisplayNameFor(model => model.Vendor_Id)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
+
                 <th>
                     @Html.DisplayNameFor(model => model.CreateDate)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.IsActive)
                 </th>
-                <th></th>
+                <th>Functions</th>
             </tr>
         </thead>
         @foreach (var item in Model)
         {
             <tbody>
                 <tr>
+                    @Html.Partial("_ProductSmall_Info", item)
                     <td>
                         @Html.DisplayFor(modelItem => item.Brand.Name)
                     </td>
@@ -55,21 +49,33 @@
                         @Html.DisplayFor(modelItem => item.Vendor.Name)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.CreateDate)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.IsActive)
+                        @{
+                            if (item.IsActive)
+                            {
+                                <div class="form-check form-check-success">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name="ExampleRadio2" id="ExampleRadio2" checked="">
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-check form-check-danger">
+                                    <label class="form-check-label">
+                                        <input type="checkbox" class="form-check-input" name="ExampleRadio2" id="ExampleRadio2" checked="">
+                                        <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            }
+
+                        }
                     </td>
                     <td>
-                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        @Html.Partial("_DeleteProduct", item)
                     </td>
                 </tr>
             </tbody>
@@ -77,3 +83,12 @@
 
     </table>
 </div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+    }
