@@ -153,7 +153,13 @@ namespace S3.Train.WebPerFume.Areas.Admin.Controllers
             return items;
         }
 
-        private IList<ProductViewModel> GetProducts(IList<Product> products)
+
+        /// <summary>
+        /// Convert List Product to List ProductViewModel All Properties
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns></returns>
+        public IList<ProductViewModel> GetProducts(IList<Product> products)
         {
             return products.Select(x => new ProductViewModel
             {
@@ -162,6 +168,18 @@ namespace S3.Train.WebPerFume.Areas.Admin.Controllers
                 Brand = _brandService.GetById(x.Brand_Id),
                 Vendor = _vendorService.GetById(x.Vendor_Id),
                 Description = x.Description,
+                ImagePath = x.ImagePath,
+                CreateDate = x.CreatedDate,
+                IsActive = x.IsActive
+            }).ToList();
+        }
+
+        public IList<ProductViewModel> GetProduct_SummaryInfo(IList<Product> products)
+        {
+            return products.Select(x => new ProductViewModel
+            {
+                Id = x.Id,
+                Name = x.Name,
                 ImagePath = x.ImagePath,
                 CreateDate = x.CreatedDate,
                 IsActive = x.IsActive

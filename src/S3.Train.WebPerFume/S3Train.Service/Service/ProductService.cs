@@ -11,5 +11,10 @@ namespace S3Train.Service
         public ProductService(ApplicationDbContext dbContext) : base(dbContext)
         {
         }
+
+        public IList<Product> GetProductsByBrandId(Guid brand_Id)
+        {
+            return this.EntityDbSet.Where(x => x.Brand_Id == brand_Id && x.IsActive == true).ToList();
+        }
     }
 }

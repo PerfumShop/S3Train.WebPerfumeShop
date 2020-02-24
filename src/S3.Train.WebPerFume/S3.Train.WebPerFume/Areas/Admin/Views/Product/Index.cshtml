@@ -41,7 +41,12 @@
         {
             <tbody>
                 <tr>
-                    @Html.Partial("_ProductSmall_Info", item)
+                    <td>
+                        @Html.ActionLink(item.Name, "Edit", new { id = item.Id })
+                    </td>
+                    <td class="py-1">
+                        <img src="~/Content/img/product-men/@item.ImagePath" class="img-" alt="@item.Name" />
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Brand.Name)
                     </td>
