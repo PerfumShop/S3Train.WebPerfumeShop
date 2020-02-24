@@ -273,3 +273,4 @@ E:\Hoc\visual\S3Train.WebPerfumeShop\src\S3.Train.WebPerFume\S3.Train.WebPerFume
 E:\Hoc\visual\S3Train.WebPerfumeShop\src\S3.Train.WebPerFume\S3.Train.WebPerFume\obj\Debug\S3.Train.WebPerFume.dll
 E:\Hoc\visual\S3Train.WebPerfumeShop\src\S3.Train.WebPerFume\S3.Train.WebPerFume\obj\Debug\S3.Train.WebPerFume.pdb
 E:\Hoc\visual\S3Train.WebPerfumeShop\src\S3.Train.WebPerFume\S3.Train.WebPerFume\obj\Debug\S3.Train.WebPerFume.Migrations.AddImagePathInProduct.resources
+D:\Son\S3Train.WebPerfumeShop\src\S3.Train.WebPerFume\S3.Train.WebPerFume\obj\Debug\S3.Train.WebPerFume.Migrations.AddImagePathInProduct.resources

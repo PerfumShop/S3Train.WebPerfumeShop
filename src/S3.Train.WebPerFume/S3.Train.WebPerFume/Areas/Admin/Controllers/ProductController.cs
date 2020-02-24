@@ -36,17 +36,17 @@ namespace S3.Train.WebPerFume.Areas.Admin.Controllers
         public ActionResult AddOrEditProduct(Guid? id)
         {
             ProductViewModel model = new ProductViewModel();
-            model.MyItems = new List<SelectListItem>
-            {
-                
-            };
+
+            model.DropDownBrand = DropDownList_Brand();
+            model.DropDownVendor = DropDownList_Vendor();
+
             if(id.HasValue)
             {
                 var product = _productService.GetById(id.Value);
                 model.Id = product.Id;
                 model.Name = product.Name;
-                model.Brand = _brandService.GetById(product.Brand_Id);
-                model.Vendor = _vendorService.GetById(product.Vendor_Id);
+                model.Brand_Id = product.Brand_Id;
+                model.Vendor_Id = product.Vendor_Id;
                 model.Description = product.Description;
                 model.ImagePath = product.ImagePath;
                 model.CreateDate = product.CreatedDate;
@@ -54,32 +54,23 @@ namespace S3.Train.WebPerFume.Areas.Admin.Controllers
                 return View(model);
             }
             else
-                return View();
+                return View(model);
         }
 
-        public List<SelectListItem> DropDownList_Brand()
-        {
-            List<SelectListItem> items = new List<SelectListItem>();
-            foreach (var item in _brandService.SelectAll())
-            {
-                items.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });
-            }
-            return items;
-        }
-
-        /// <summary>
+         /// <summary>
         /// If id != null Update else Create new
         /// </summary>
         /// <param name="id">Guid</param>
         /// <param name="model">ProductViewModel</param>
         /// <returns></returns>
         [HttpPost]
-        [AllowAnonymous]
-        public ActionResult AddOrEditProduct(Guid? id, ProductViewModel model)
+        [ValidateInput(false)]
+        public ActionResult AddOrEditProduct(Guid? id, ProductViewModel model, HttpPostedFileBase image)
         {
             try
             {
                 bool isNew = !id.HasValue;
+                string localFile = "~/Content/img/product-men";
 
                 // isNew = true update UpdatedDate of product
                 // isNew = false get it by id
@@ -92,7 +83,7 @@ namespace S3.Train.WebPerFume.Areas.Admin.Controllers
                 product.Brand_Id = model.Brand_Id;
                 product.Vendor_Id = model.Vendor_Id;
                 product.Description = model.Description;
-                product.ImagePath = model.ImagePath;
+                product.ImagePath = UpFile(image, localFile);
                 product.IsActive = true;
 
                 if(isNew)
@@ -114,6 +105,54 @@ namespace S3.Train.WebPerFume.Areas.Admin.Controllers
         }
 
 
+
+        [HttpGet]
+        public PartialViewResult DeleteProduct(Guid id)
+        {
+            var product = _productService.GetById(id);
+            var model = new ProductViewModel
+            {
+                Name = $"{product.Name}"
+            };
+            return PartialView("~/Areas/Admin/Views/Product/_DeleteProduct.cshtml", model);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteProduct(ProductViewModel model)
+        {
+            var product = _productService.GetById(model.Id);
+            _productService.Delete(product);
+            return RedirectToAction("Index");
+        }
+
+        /// <summary>
+        /// Drop Down List Brand
+        /// </summary>
+        /// <returns></returns>
+        public List<SelectListItem> DropDownList_Brand()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            foreach (var item in _brandService.SelectAll())
+            {
+                items.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });
+            }
+            return items;
+        }
+
+        /// <summary>
+        /// Drop Down List Vendor
+        /// </summary>
+        /// <returns></returns>
+        public List<SelectListItem> DropDownList_Vendor()
+        {
+            List<SelectListItem> items = new List<SelectListItem>();
+            foreach (var item in _vendorService.SelectAll())
+            {
+                items.Add(new SelectListItem { Text = item.Name, Value = item.Id.ToString() });
+            }
+            return items;
+        }
+
         private IList<ProductViewModel> GetProducts(IList<Product> products)
         {
             return products.Select(x => new ProductViewModel
@@ -129,6 +168,13 @@ namespace S3.Train.WebPerFume.Areas.Admin.Controllers
             }).ToList();
         }
 
+
+        /// <summary>
+        /// Upload file and save in folder
+        /// </summary>
+        /// <param name="a">choose file</param>
+        /// <param name="url">local save file </param>
+        /// <returns>file name</returns>
         public string UpFile(HttpPostedFileBase a, string url)
         {
             string fileName = "";
