@@ -1,0 +1,93 @@
+﻿@using S3.Train.WebPerFume.Areas.Admin.Models
+@model BannerViewModel
+
+@{
+    ViewBag.Title = "AddOrEditBanner";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script src="~/Content/ckeditor/ckeditor.js"></script>
+
+<div class="card card-body">
+    @{
+        if (Model.Link== null)
+        {
+            <h2 class="card-title">Create New Product</h2>
+        }
+        else
+        {
+            <h2 class="card-title">Update Product</h2>
+        }
+    }
+
+    @using (Html.BeginForm("AddOrEditBanner", "Banner", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Link, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Link, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+           
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <input type="file" multiple id="gallery-photo-add" name="image" class="btn">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <div class="gallery rounded mx-auto d-block"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Submit" class="btn btn-gradient-primary mr-2" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index", new { @class = "text text-danger" })
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+       $(function () {
+           // Multiple images preview in browser
+           var imagesPreview = function (input, placeToInsertImagePreview) {
+
+               if (input.files) {
+                   var filesAmount = input.files.length;
+
+                   for (i = 0; i < filesAmount; i++) {
+                       var reader = new FileReader();
+
+                       reader.onload = function (event) {
+                           $($.parseHTML('<img>')).attr('src', event.target.result).appendTo(placeToInsertImagePreview);
+                       }
+
+                       reader.readAsDataURL(input.files[i]);
+                   }
+               }
+
+           };
+
+           $('#gallery-photo-add').on('change', function () {
+               imagesPreview(this, 'div.gallery');
+           });
+       });
+    </script>
+}

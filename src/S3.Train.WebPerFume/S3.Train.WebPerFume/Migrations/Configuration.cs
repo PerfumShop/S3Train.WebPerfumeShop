@@ -16,218 +16,218 @@
 
         protected override void Seed(ApplicationDbContext context)
         {
-            //var brands = new List<Brand>
-            //{
-            //    new Brand
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
+            var brands = new List<Brand>
+            {
+                new Brand
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
 
-            //        Name = "Christian Dior",
-            //        Summary = "The 'Miss Dior Cherie' perfume and the 'Dior Homme' fragrance were released in 2005.",
-            //        Logo = "logodior",
-            //    },
-            //     new Brand
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
+                    Name = "Christian Dior",
+                    Summary = "The 'Miss Dior Cherie' perfume and the 'Dior Homme' fragrance were released in 2005.",
+                    Logo = "logodior",
+                },
+                 new Brand
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
 
-            //        Name = "Chanel",
-            //        Summary = "Chanel is well-known for the perfume No. 5 de Chanel and Chanel Suit",
-            //        Logo = "logochanel",
-            //    },
-            //    new Brand
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
+                    Name = "Chanel",
+                    Summary = "Chanel is well-known for the perfume No. 5 de Chanel and Chanel Suit",
+                    Logo = "logochanel",
+                },
+                new Brand
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
 
-            //        Name = "Burberry",
-            //        Summary = "Burberry",
-            //        Logo = "logoburberry",
-            //    },
-            //    new Brand
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
+                    Name = "Burberry",
+                    Summary = "Burberry",
+                    Logo = "logoburberry",
+                },
+                new Brand
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
 
-            //        Name = "Gucci",
-            //        Summary = "is an Italian luxury brand",
-            //        Logo = "logogucci",
-            //    },
-            //     new Brand
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
+                    Name = "Gucci",
+                    Summary = "is an Italian luxury brand",
+                    Logo = "logogucci",
+                },
+                 new Brand
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
 
-            //        Name = "Saint Laurent",
-            //        Summary = "",
-            //        Logo = "logoSaintLaurent",
-            //    },
-            //    new Brand
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
+                    Name = "Saint Laurent",
+                    Summary = "",
+                    Logo = "logoSaintLaurent",
+                },
+                new Brand
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
 
-            //        Name = "Carven",
-            //        Summary = "",
-            //        Logo = "logocarven",
-            //    },
+                    Name = "Carven",
+                    Summary = "",
+                    Logo = "logocarven",
+                },
 
-            //     new Brand
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
+                 new Brand
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
 
-            //        Name = "Tom Ford",
-            //        Summary = "",
-            //        Logo = "logotomford",
-            //    },
-            //     new Brand
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
+                    Name = "Tom Ford",
+                    Summary = "",
+                    Logo = "logotomford",
+                },
+                 new Brand
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
 
-            //        Name = "Van Cleef & Arpels",
-            //        Summary = "",
-            //        Logo = "logoVanCleef&Arpels",
-            //    },
-            //      new Brand
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
+                    Name = "Van Cleef & Arpels",
+                    Summary = "",
+                    Logo = "logoVanCleef&Arpels",
+                },
+                  new Brand
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
 
-            //        Name = "Le LaBo",
-            //        Summary = "",
-            //        Logo = "logolelabo",
-            //    },
-            //};
-            //brands.ForEach(x => context.Brands.AddOrUpdate(c => c.Name, x));
-            //context.SaveChanges();
-            //var vendors = new List<Vendor>
-            //{
-            //     new Vendor
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
-            //        Name = "Van Cleef & Arpels",
-            //        Address = "Paris",
-            //        PhoneNumber = "03030405",
-            //        Email="Vancleefarpels@gmail.com",
-            //    },
-            //     new Vendor
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
-            //        Name = "Carven",
-            //        Address = "Paris",
-            //        PhoneNumber = "03030405",
-            //        Email="carven@gmail.com",
-            //    },
-            //     new Vendor
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
-            //        Name = "YVesSaint Laurent",
-            //        Address = "Paris",
-            //        PhoneNumber = "03030405",
-            //        Email="YvesSaintLaurent@gmail.com",
-            //    },
-            //     new Vendor
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
-            //        Name = "Coco Chanel",
-            //        Address = "Paris",
-            //        PhoneNumber = "03030405",
-            //        Email="cocochanel@gmail.com",
-            //    },
-            //     new Vendor
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
-            //        Name = "Burberry",
-            //        Address = "United Kingdom",
-            //        PhoneNumber = "03030405",
-            //        Email="Burberry@gmail.com",
-            //    },
-            //      new Vendor
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
-            //        Name = "Gucci",
-            //        Address = "Italy",
-            //        PhoneNumber = "03030405",
-            //        Email="gucci@gmail.com",
-            //    },
-            //      new Vendor
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
-            //        Name = "Christian Dior",
-            //        Address = "Italy",
-            //        PhoneNumber = "03030405",
-            //        Email="dior@gmail.com",
-            //    },
-            //};
-            //vendors.ForEach(x => context.Vendors.AddOrUpdate(c => c.Name, x));
-            //context.SaveChanges();
-            //var categories = new List<Category>
-            //{
-            //new Category
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
-            //        Name = "Highlights",
-            //        Summary = "Typical products of the shop",
+                    Name = "Le LaBo",
+                    Summary = "",
+                    Logo = "logolelabo",
+                },
+            };
+            brands.ForEach(x => context.Brands.AddOrUpdate(c => c.Name, x));
+            context.SaveChanges();
+            var vendors = new List<Vendor>
+            {
+                 new Vendor
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
+                    Name = "Van Cleef & Arpels",
+                    Address = "Paris",
+                    PhoneNumber = "03030405",
+                    Email="Vancleefarpels@gmail.com",
+                },
+                 new Vendor
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
+                    Name = "Carven",
+                    Address = "Paris",
+                    PhoneNumber = "03030405",
+                    Email="carven@gmail.com",
+                },
+                 new Vendor
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
+                    Name = "YVesSaint Laurent",
+                    Address = "Paris",
+                    PhoneNumber = "03030405",
+                    Email="YvesSaintLaurent@gmail.com",
+                },
+                 new Vendor
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
+                    Name = "Coco Chanel",
+                    Address = "Paris",
+                    PhoneNumber = "03030405",
+                    Email="cocochanel@gmail.com",
+                },
+                 new Vendor
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
+                    Name = "Burberry",
+                    Address = "United Kingdom",
+                    PhoneNumber = "03030405",
+                    Email="Burberry@gmail.com",
+                },
+                  new Vendor
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
+                    Name = "Gucci",
+                    Address = "Italy",
+                    PhoneNumber = "03030405",
+                    Email="gucci@gmail.com",
+                },
+                  new Vendor
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
+                    Name = "Christian Dior",
+                    Address = "Italy",
+                    PhoneNumber = "03030405",
+                    Email="dior@gmail.com",
+                },
+            };
+            vendors.ForEach(x => context.Vendors.AddOrUpdate(c => c.Name, x));
+            context.SaveChanges();
+            var categories = new List<Category>
+            {
+            new Category
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
+                    Name = "Highlights",
+                    Summary = "Typical products of the shop",
 
-            //    },
-            //new Category
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
-            //        Name = "Selling",
-            //        Summary = "Products sold the most",
+                },
+            new Category
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
+                    Name = "Selling",
+                    Summary = "Products sold the most",
 
-            //    },
-            //new Category
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
-            //        Name = "New Products",
-            //        Summary = "Launches new products",
+                },
+            new Category
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
+                    Name = "New Products",
+                    Summary = "Launches new products",
 
-            //    },
-            //new Category
-            //    {
-            //        Id = Guid.NewGuid(),
-            //        CreatedDate = DateTime.Now,
-            //        IsActive = true,
-            //        Name = "Promotion Item",
-            //        Summary = "Promotion products",
+                },
+            new Category
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    IsActive = true,
+                    Name = "Promotion Item",
+                    Summary = "Promotion products",
 
-            //    },
-            //};
-            //categories.ForEach(x => context.Categories.AddOrUpdate(c => c.Name, x));
-            //context.SaveChanges();
+                },
+            };
+            categories.ForEach(x => context.Categories.AddOrUpdate(c => c.Name, x));
+            context.SaveChanges();
 
             //var products = new List<Product>
             //{

@@ -40,7 +40,7 @@ namespace S3.Train.WebPerFume.Areas.Admin.Controllers
             model.DropDownBrand = DropDownList_Brand();
             model.DropDownVendor = DropDownList_Vendor();
 
-            if(id.HasValue)
+            if (id.HasValue)
             {
                 var product = _productService.GetById(id.Value);
                 model.Id = product.Id;
@@ -57,7 +57,7 @@ namespace S3.Train.WebPerFume.Areas.Admin.Controllers
                 return View(model);
         }
 
-         /// <summary>
+        /// <summary>
         /// If id != null Update else Create new
         /// </summary>
         /// <param name="id">Guid</param>
@@ -86,7 +86,7 @@ namespace S3.Train.WebPerFume.Areas.Admin.Controllers
                 product.ImagePath = UpFile(image, localFile);
                 product.IsActive = true;
 
-                if(isNew)
+                if (isNew)
                 {
                     product.CreatedDate = DateTime.Now;
                     product.Id = Guid.NewGuid();
@@ -97,7 +97,7 @@ namespace S3.Train.WebPerFume.Areas.Admin.Controllers
                     _productService.Update(product);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -153,7 +153,13 @@ namespace S3.Train.WebPerFume.Areas.Admin.Controllers
             return items;
         }
 
-        private IList<ProductViewModel> GetProducts(IList<Product> products)
+
+        /// <summary>
+        /// Convert List Product to List ProductViewModel All Properties
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns></returns>
+        public IList<ProductViewModel> GetProducts(IList<Product> products)
         {
             return products.Select(x => new ProductViewModel
             {
@@ -162,6 +168,18 @@ namespace S3.Train.WebPerFume.Areas.Admin.Controllers
                 Brand = _brandService.GetById(x.Brand_Id),
                 Vendor = _vendorService.GetById(x.Vendor_Id),
                 Description = x.Description,
+                ImagePath = x.ImagePath,
+                CreateDate = x.CreatedDate,
+                IsActive = x.IsActive
+            }).ToList();
+        }
+
+        public IList<ProductViewModel> GetProduct_SummaryInfo(IList<Product> products)
+        {
+            return products.Select(x => new ProductViewModel
+            {
+                Id = x.Id,
+                Name = x.Name,
                 ImagePath = x.ImagePath,
                 CreateDate = x.CreatedDate,
                 IsActive = x.IsActive

@@ -1,33 +1,22 @@
 ﻿@using S3.Train.WebPerFume.Areas.Admin.Models;
-@model IEnumerable<ProductViewModel>
-
+@model IEnumerable<BannerViewModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div class="card card-body display">
-    <h2 class="card-text">Products</h2>
+    <h2 class="card-text">Banners</h2>
     <div>
-        @Html.ActionLink("New", "AddOrEditProduct", "Product", new { @class = "btn btn-gradient-success" })
+        @Html.ActionLink("New", "AddOrEditBanner", "Banner", new { @class = "btn btn-gradient-success" })
     </div>
     <hr />
     <table id="myTable" class="table table-hover">
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                    @Html.DisplayNameFor(model => model.Image)
                 </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ImagePath)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Brand_Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Vendor_Id)
-                </th>
-
                 <th>
                     @Html.DisplayNameFor(model => model.CreateDate)
                 </th>
@@ -41,15 +30,11 @@
         {
             <tbody>
                 <tr>
-                    @Html.Partial("_ProductSmall_Info", item)
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Brand.Name)
+                    <td class="py-1">
+                        <img src="~/Content/img/banner/@item.Image" class="img-" alt="@item.Link" />
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Vendor.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreateDate)
+                        @item.CreateDate
                     </td>
                     <td>
                         @{
@@ -75,8 +60,8 @@
                         }
                     </td>
                     <td>
-                        @Html.Partial("_DeleteProduct", item)
-                        @Html.ActionLink("Edit", "AddOrEditProduct", "Product", new { @class = "btn btn-gradient-success" }, new{ id = item.Id})
+                        @Html.Partial("_DeleteBanner", item)
+                        @Html.ActionLink("Edit", "AddOrEditBanner", "Banner", new { @class = "btn btn-gradient-success" }, new { id = item.Id })
                     </td>
                 </tr>
             </tbody>
@@ -92,4 +77,4 @@
             $('#myTable').DataTable();
         });
     </script>
-    }
+}
